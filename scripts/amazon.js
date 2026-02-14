@@ -68,9 +68,9 @@ function updateCart() {
     document.querySelector('.js-cart-quantity')
       .innerHTML = cartQuantity;   
   }
-let timeId;
 document.querySelectorAll('.js-add-to-cart-button')
     .forEach(button => {
+      let timeId;
       button.addEventListener('click', () => {
         const {productId} = button.dataset;
         // Displaying message
