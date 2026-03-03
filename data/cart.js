@@ -91,3 +91,11 @@ export function getDeliveryOption(deliveryId) {
   });
   return matchingOption;
 }
+
+export function cartQuantity() {
+  let cartQuantity =0;
+        cart.forEach(({quantity}) => {
+        cartQuantity += quantity;
+        });
+  return cartQuantity;
+}
