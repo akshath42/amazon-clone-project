@@ -4,9 +4,9 @@ import { cart, removeFromCart, updateCart as updateCartQuantity, updateDeliveryO
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import { deliveryOptions } from "../../data/deliveryOptions.js";
 import { renderPaymentSummary } from "./paymentSummary.js";
+import { renderCheckoutHeader } from "./checkoutHeader.js";
 
 export function renderOrderSummary() {
-    updateCart();
     let cartSummaryHtml = '';
 
     cart.forEach((cartItem) => {
@@ -106,18 +106,9 @@ export function renderOrderSummary() {
                 removeFromCart(productId);
                 renderOrderSummary();
                 renderPaymentSummary();
+                renderCheckoutHeader();
             })
         })
-
-    function updateCart() {
-        let cartQuantity =0;
-        cart.forEach(({quantity}) => {
-        cartQuantity += quantity;
-        });
-
-        document.querySelector('.js-cart-summary-quantity')
-        .innerHTML = cartQuantity; 
-    }
 
     document.querySelectorAll('.js-update-link')
         .forEach((link) => {
@@ -136,9 +127,9 @@ export function renderOrderSummary() {
                 const inputElem = container.querySelector('.quantity-input')
                 const updatedValue = Number(inputElem.value);
                 updateCartQuantity(productId, updatedValue);
-                container.querySelector('.js-quantity-label')
-                    .innerHTML = `${updatedValue}`;
-                updateCart();
+                renderOrderSummary();
+                renderCheckoutHeader();
+                renderPaymentSummary();
                 container.classList.remove('is-editing-quantity');
             })
         });
