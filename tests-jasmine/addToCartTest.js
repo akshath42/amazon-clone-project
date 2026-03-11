@@ -1,3 +1,6 @@
+// If you want to test addToCart, go to cart.js
+// Replace the quantity with  a dummy value of 1 instead of value from DOM
+
 import { addToCart, loadToStorage ,cart } from "../data/cart.js";
 
 describe('Test suite: addToCart', () => {
