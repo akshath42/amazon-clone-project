@@ -2,7 +2,14 @@ import {cart, addToCart} from '../data/cart.js';
 import { products, loadProducts } from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
-loadProducts(renderProductsPage);
+new Promise((resolve) => {
+  loadProducts(() => {
+    resolve();
+  })
+
+}).then(() => {
+  renderProductsPage();
+})
 
 function renderProductsPage() {
   updateCart();
