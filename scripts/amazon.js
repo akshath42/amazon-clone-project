@@ -3,7 +3,13 @@ import { products, loadProductsFetch } from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
 async function loadProductsPage(params) {
-    await loadProductsFetch();
+    try {
+      await loadProductsFetch();
+    }
+    catch (error) {
+      console.log('Unexpected error')
+    }
+    
     renderProductsPage();
 }
 

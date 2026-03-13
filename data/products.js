@@ -7,6 +7,9 @@ export function loadProductsFetch() {
 
   }).then((responseData) => {
     products = responseData;
+
+  }).catch((error) => {
+    console.log('Unexpected error')
   });
   return promise;
 }
