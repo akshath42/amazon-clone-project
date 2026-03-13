@@ -11,8 +11,20 @@ loadProducts(() => {
 })
 */
 
+/*
 loadProductsFetch().then(() => {
     renderOrderSummary();
     renderPaymentSummary();
     renderCheckoutHeader();
 });
+*/
+
+async function loadPage() {
+    await loadProductsFetch();
+
+    renderOrderSummary();
+    renderPaymentSummary();
+    renderCheckoutHeader();
+}
+
+loadPage();

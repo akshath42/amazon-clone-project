@@ -2,9 +2,12 @@ import {cart, addToCart} from '../data/cart.js';
 import { products, loadProductsFetch } from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
-loadProductsFetch().then(() => {
-  renderProductsPage();
-})
+async function loadProductsPage(params) {
+    await loadProductsFetch();
+    renderProductsPage();
+}
+
+loadProductsPage();
 
 function renderProductsPage() {
   updateCart();
